@@ -74,17 +74,8 @@ def save_to_chroma(chunks: list[Document]):
     if os.path.exists(CHROMA_PATH):
         shutil.rmtree(CHROMA_PATH)
 
-
-    # client = OpenAI(api_key="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")
-    # response = client.chat.completions.create(
-    #     model="gpt-5-nano",
-    #     input="write a haiku about ai",
-    #     store=True,
-    # )
-
-    # Create a new DB from the documents.
     db = Chroma.from_documents(
-        chunks, OpenAIEmbeddings(model="text-embedding-3-small"), persist_directory=CHROMA_PATH
+        chunks, OpenAIEmbeddings(), persist_directory=CHROMA_PATH
     )
     db.persist()
     print(f"Saved {len(chunks)} chunks to {CHROMA_PATH}.")

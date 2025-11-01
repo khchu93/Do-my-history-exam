@@ -1,9 +1,15 @@
 import argparse
 # from dataclasses import dataclass
-from langchain_community.vectorstores import Chroma
+# from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
+from langchain_classic.prompts import ChatPromptTemplate
+from dotenv import load_dotenv
+import openai 
+import os
+
+
 
 CHROMA_PATH = "chroma"
 
@@ -17,6 +23,12 @@ Answer the question based only on the following context:
 Answer the question based on the above context: {question}
 """
 
+# Load environment variables. Assumes that project contains .env file with API keys
+load_dotenv()
+#---- Set OpenAI API key 
+# Change environment variable name from "OPENAI_API_KEY" to the name given in 
+# your .env file.
+openai.api_key = os.environ['OPENAI_API_KEY']
 
 def main():
     # Create CLI.
@@ -33,7 +45,7 @@ def main():
     results = db.similarity_search_with_relevance_scores(query_text, k=3)
     if len(results) == 0 or results[0][1] < 0.7:
         print(f"Unable to find matching results.")
-        return
+        # return
 
     context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in results])
     prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
@@ -41,10 +53,10 @@ def main():
     print(prompt)
 
     model = ChatOpenAI()
-    response_text = model.predict(prompt)
+    response_text = model.invoke(prompt)
 
     sources = [doc.metadata.get("source", None) for doc, _score in results]
-    formatted_response = f"Response: {response_text}\nSources: {sources}"
+    formatted_response = f"Response: {response_text.content}\nSources: {sources}"
     print(formatted_response)
 
 
