@@ -19,8 +19,11 @@ chromadb
 openai
 tiktoken
 
-# Install libmagic to aid DirectoryLoader
+# libmagic support to aid DirectoryLoader
 python-magic-bin
+
+# RAG Evaluation
+ragas
 
 # Notes:
 # install markdown dependencies with:
