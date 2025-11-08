@@ -1,0 +1,161 @@
+{
+  "game_name": "CATAN",
+  "training_qas": [
+    {
+      "id": "q1",
+      "question": "Can you build a settlement on the first turn?",
+      "relevant_chunks": [
+        "The first player places 1 settlement on an empty intersection of their choice."
+      ],
+      "answer": "Yes, each player may place one settlement at the start of the game.",
+      "relevance_spans": [
+        {
+          "page": 11,
+          "start": 2524,
+          "end": 2602
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Can you use Year of Plenty to take two of the same resource?",
+      "relevant_chunks": [
+        "When you play this card, take any 2 resource cards from the supply. Add them to your hand. They may be 2 of the same resource or 2 different resources."
+      ],
+      "answer": "Yes, you may choose any two, even duplicates.",
+      "relevance_spans": [
+        {
+          "page": 8,
+          "start": 1948,
+          "end": 2099
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "What does the Monopoly card do?",
+      "relevant_chunks": [
+        "When you play this card, announce one type of resource. Each player must give you all their resource cards of that type."
+      ],
+      "answer": "It lets you take all cards of one resource type from every player.",
+      "relevance_spans": [
+        {
+          "page": 8,
+          "start": 1349,
+          "end": 1469
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "Can you build a city without a settlement?",
+      "relevant_chunks": [
+        "Cities always replace settlements."
+      ],
+      "answer": "Yes, as long as you have enough resources.",
+      "relevance_spans": [
+        {
+          "page": 8,
+          "start": 2380,
+          "end": 2414
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "Can you steal from a player with no resource cards?",
+      "relevant_chunks": [
+        "Steal 1 random resource card from a player who has a building on that hex."
+      ],
+      "answer": "Yes, but you get nothing.",
+      "relevance_spans": [
+        {
+          "page": 5,
+          "start": 2005,
+          "end": 2079
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "Can you win by revealing multiple Victory Point cards mid-turn?",
+      "relevant_chunks": [
+        "Reveal all your Victory Point cards, including any built this turn, if you can reach the number of VPs needed to win.",
+        "Turn over any number of Victory Point cards, including ones built this turn, to show that you have reached 10 VPs."
+      ],
+      "answer": "Yes, you can reveal them anytime to reach 10 points and win.",
+      "relevance_spans": [
+        {
+          "page": 8,
+          "start": 1757,
+          "end": 1874
+        },
+        {
+          "page": 9,
+          "start": 1249,
+          "end": 1363
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "Can you trade after building?",
+      "relevant_chunks": [
+        "You may take actions in this phase as often as you like and in any order, as long as you have the resources to do so."
+      ],
+      "answer": "Yes, you can trade and build in any order.",
+      "relevance_spans": [
+        {
+          "page": 6,
+          "start": 230,
+          "end": 347
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "Can you downgrade a city back to a settlement?",
+      "relevant_chunks": [
+        "Cities always replace settlements. To build a city, remove one of your settlements from the board, return it to your player area, and place your city where the settlement was located."
+      ],
+      "answer": "No, upgrades are permanent.",
+      "relevance_spans": [
+        {
+          "page": 8,
+          "start": 2380,
+          "end": 2563
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "question": "Can you use a harbor without building a settlement there?",
+      "relevant_chunks": [
+        "If you have a building on a 3:1 port, you may put 3 of the same resource cards into the supply and take 1 card of a different resource from the supply."
+      ],
+      "answer": "No, you must control the harbor with a settlement or city.",
+      "relevance_spans": [
+        {
+          "page": 6,
+          "start": 1024,
+          "end": 1175
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "Can you build a road through another player's settlement?",
+      "relevant_chunks": [
+        "You may not build a road starting on the other side of an opponent's building."
+      ],
+      "answer": "No, you cannot pass through another player's settlement or city.",
+      "relevance_spans": [
+        {
+          "page": 7,
+          "start": 843,
+          "end": 921
+        }
+      ]
+    }
+  ]
+}

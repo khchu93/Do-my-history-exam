@@ -1,0 +1,144 @@
+[
+  {
+    "question": "Can you play a development card the same turn you buy it?",
+    "relevant_chunks": [
+      "Not on the turn you bought it"
+    ],
+    "answer": "No, you must wait until your next turn (except Victory Point cards)."
+  },
+  {
+    "question": "Can you use Year of Plenty to take two of the same resource?",
+    "relevant_chunks": [
+      "When you play this card, take any 2 resource cards from the supply. Add them to your hand. They may be 2 of the same resource or 2 different resources."
+    ],
+    "answer": "Yes, you may choose any two, even duplicates."
+  },
+  {
+    "question": "What does the Monopoly card do?",
+    "relevant_chunks": [
+      "When you play this card, announce one type of resource. Each player must give you all their resource cards of that type."
+    ],
+    "answer": "It lets you take all cards of one resource type from every player."
+  },
+  {
+    "question": "Can you build multiple roads in one turn?",
+    "relevant_chunks": [
+      "During your turn, you may spend resources (aka \"build\") to place roads and buildings on the board, as well as to take development cards from the supply."
+    ],
+    "answer": "Yes, as long as you have enough resources."
+  },
+  {
+    "question": "Can you steal from a player with no resource cards?",
+    "relevant_chunks": [
+      "Steal 1 random resource card from a player who has a building on that hex."
+    ],
+    "answer": "Yes, but you get nothing."
+  },
+  {
+    "question": "Can you win by revealing multiple Victory Point cards mid-turn?",
+    "relevant_chunks": [
+      "Reveal all your Victory Point cards, including any built this turn, if you can reach the number of VPs needed to win.",
+      "Turn over any number of Victory Point cards, including ones built this turn, to show that you have reached 10 VPs."
+    ],
+    "answer": "Yes, you can reveal them anytime to reach 10 points and win."
+  },
+  {
+    "question": "Can you trade after building?",
+    "relevant_chunks": [
+      "You may take actions in this phase as often as you like and in any order, as long as you have the resources to do so."
+    ],
+    "answer": "Yes, you can trade and build in any order."
+  },
+  {
+    "question": "Can you downgrade a city back to a settlement?",
+    "relevant_chunks": [
+      "Cities always replace settlements. To build a city, remove one of your settlements from the board, return it to your player area, and place your city where the settlement was located."
+    ],
+    "answer": "No, upgrades are permanent."
+  },
+  {
+    "question": "Can you use a harbor without building a settlement there?",
+    "relevant_chunks": [
+      "If you have a building on a 3:1 port, you may put 3 of the same resource cards into the supply and take 1 card of a different resource from the supply."
+    ],
+    "answer": "No, you must control the harbor with a settlement or city."
+  },
+  {
+    "question": "Can you build a road through another player's settlement?",
+    "relevant_chunks": [
+      "You may not build a road starting on the other side of an opponent's building."
+    ],
+    "answer": "No, you cannot pass through another player's settlement or city."
+  },
+  {
+    "question": "Can you move the robber onto a hex where you have a settlement?",
+    "relevant_chunks": [
+      "You must move the robber to a new hex.",
+      "A hex with the robber does not produce resources when its number is rolled."
+    ],
+    "answer": "Yes, but it still blocks that hex from producing."
+  },
+  {
+    "question": "Can you trade with another player during their turn?",
+    "relevant_chunks": [
+      "During your turn, other players may only trade with you, not with each other or with the supply."
+    ],
+    "answer": "Yes, trading can happen on any player's turn, but only the current player can trade with the bank."
+  },
+  {
+    "question": "Can you play multiple development cards on the same turn?",
+    "relevant_chunks": [
+      "You may play 1 development card during your turn by placing it face up in your player area."
+    ],
+    "answer": "No, only one development card per turn (except Victory Points)."
+  },
+  {
+    "question": "Can you build a settlement and upgrade it to a city in the same turn?",
+    "relevant_chunks": [
+      "You may take actions in this phase as often as you like and in any order, as long as you have the resources to do so."
+    ],
+    "answer": "Yes, if you have enough resources for both actions."
+  },
+  {
+    "question": "Can you use a Knight card before rolling the dice?",
+    "relevant_chunks": [
+      "You may play a development card before rolling dice or at any time during the Action phase."
+    ],
+    "answer": "No, you must roll first, then play the Knight."
+  },
+  {
+    "question": "What happens if two players tie for Longest Road?",
+    "relevant_chunks": [
+      "If another player has more continuous roads in play, they immediately receive this tile."
+    ],
+    "answer": "Neither gets the card until one has the clear lead."
+  },
+  {
+    "question": "How are roads placed?",
+    "relevant_chunks": [
+      "Roads are placed on empty hex edges. A new road must connect to one of your existing roads or buildings."
+    ],
+    "answer": "Each road must connect to one of your existing roads, settlements, or cities."
+  },
+  {
+    "question": "Can a player build disconnected roads?",
+    "relevant_chunks": [
+      "A new road must connect to one of your existing roads or buildings."
+    ],
+    "answer": "No, every new road must connect to your existing network."
+  },
+  {
+    "question": "What does a Year of Plenty card do?",
+    "relevant_chunks": [
+      "When you play this card, take any 2 resource cards from the supply."
+    ],
+    "answer": "It gives you any two resource cards from the bank."
+  },
+  {
+    "question": "What is needed to upgrade a settlement to a city?",
+    "relevant_chunks": [
+      "Cities cost 3 ore and 2 grain."
+    ],
+    "answer": "3 ore and 2 grain."
+  }
+]

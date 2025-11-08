@@ -1,0 +1,102 @@
+[
+  {
+    "query_id": "q1",
+    "query_text": "Can you build during another player’s turn?",
+    "chunks": [
+      {"chunk_id": "c1", "chunk_text": "No, only on your own turn.", "relevant": 1},
+      {"chunk_id": "c2", "chunk_text": "You may trade with other players only on your turn.", "relevant": 0},
+      {"chunk_id": "c3", "chunk_text": "Roads must connect to your network.", "relevant": 0}
+    ],
+    "ground_truth_answer": "No, only on your own turn."
+  },
+  {
+    "query_id": "q2",
+    "query_text": "What happens if the bank runs out of development cards?",
+    "chunks": [
+      {"chunk_id": "c4", "chunk_text": "No more can be purchased until someone uses or returns one.", "relevant": 1},
+      {"chunk_id": "c5", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0},
+      {"chunk_id": "c6", "chunk_text": "Cities require 3 ore and 2 grain.", "relevant": 0}
+    ],
+    "ground_truth_answer": "No more can be purchased until someone uses or returns one."
+  },
+  {
+    "query_id": "q3",
+    "query_text": "What happens if a 7 is rolled and you have 8 cards?",
+    "chunks": [
+      {"chunk_id": "c7", "chunk_text": "You must discard 4 cards (half, rounded down).", "relevant": 1},
+      {"chunk_id": "c8", "chunk_text": "Roads must connect to your network.", "relevant": 0},
+      {"chunk_id": "c9", "chunk_text": "You can play one development card per turn.", "relevant": 0}
+    ],
+    "ground_truth_answer": "You must discard 4 cards (half, rounded down)."
+  },
+  {
+    "query_id": "q4",
+    "query_text": "Can you lose the Longest Road card?",
+    "chunks": [
+      {"chunk_id": "c10", "chunk_text": "Yes, if another player builds a longer continuous road.", "relevant": 1},
+      {"chunk_id": "c11", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0},
+      {"chunk_id": "c12", "chunk_text": "Cities cost 3 ore and 2 grain.", "relevant": 0}
+    ],
+    "ground_truth_answer": "Yes, if another player builds a longer continuous road."
+  },
+  {
+    "query_id": "q5",
+    "query_text": "Can you trade with the bank during another player’s turn?",
+    "chunks": [
+      {"chunk_id": "c13", "chunk_text": "No, only the active player can trade with the bank.", "relevant": 1},
+      {"chunk_id": "c14", "chunk_text": "Development cards include Monopoly, Knight, Victory Points, Road Building, Year of Plenty.", "relevant": 0},
+      {"chunk_id": "c15", "chunk_text": "Settlements must be at least 2 edges apart.", "relevant": 0}
+    ],
+    "ground_truth_answer": "No, only the active player can trade with the bank."
+  },
+  {
+    "query_id": "q6",
+    "query_text": "Can the robber block your own settlement?",
+    "chunks": [
+      {"chunk_id": "c16", "chunk_text": "Yes, you also get no production from that hex.", "relevant": 1},
+      {"chunk_id": "c17", "chunk_text": "Cities cost 3 ore and 2 grain.", "relevant": 0},
+      {"chunk_id": "c18", "chunk_text": "Roads must connect to your network.", "relevant": 0}
+    ],
+    "ground_truth_answer": "Yes, you also get no production from that hex."
+  },
+  {
+    "query_id": "q7",
+    "query_text": "What happens if the resource deck runs out?",
+    "chunks": [
+      {"chunk_id": "c19", "chunk_text": "Players cannot collect that resource until others return some to the bank.", "relevant": 1},
+      {"chunk_id": "c20", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0},
+      {"chunk_id": "c21", "chunk_text": "Roads must connect to your network.", "relevant": 0}
+    ],
+    "ground_truth_answer": "Players cannot collect that resource until others return some to the bank."
+  },
+  {
+    "query_id": "q8",
+    "query_text": "Can you build roads in any direction?",
+    "chunks": [
+      {"chunk_id": "c22", "chunk_text": "Yes, as long as each connects to your existing network.", "relevant": 1},
+      {"chunk_id": "c23", "chunk_text": "Cities require 3 ore and 2 grain.", "relevant": 0},
+      {"chunk_id": "c24", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0}
+    ],
+    "ground_truth_answer": "Yes, as long as each connects to your existing network."
+  },
+  {
+    "query_id": "q9",
+    "query_text": "How many cities can you have at most?",
+    "chunks": [
+      {"chunk_id": "c25", "chunk_text": "4, since you only have 4 city pieces.", "relevant": 1},
+      {"chunk_id": "c26", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0},
+      {"chunk_id": "c27", "chunk_text": "Roads must connect to your network.", "relevant": 0}
+    ],
+    "ground_truth_answer": "4, since you only have 4 city pieces."
+  },
+  {
+    "query_id": "q10",
+    "query_text": "What happens if the robber is placed on the desert?",
+    "chunks": [
+      {"chunk_id": "c28", "chunk_text": "The desert produces nothing, and it remains blocked.", "relevant": 1},
+      {"chunk_id": "c29", "chunk_text": "Cities cost 3 ore and 2 grain.", "relevant": 0},
+      {"chunk_id": "c30", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0}
+    ],
+    "ground_truth_answer": "The desert produces nothing, and it remains blocked."
+  }
+]

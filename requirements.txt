@@ -25,6 +25,10 @@ python-magic-bin
 # RAG Evaluation
 ragas
 
+# HuggingFace Evaluate
+evaluate
+scikit-learn    # to use evaluate
+beir            # to use ndcg
 # Notes:
 # install markdown dependencies with:
 # pip install "unstructured[md]"

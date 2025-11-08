@@ -1,0 +1,102 @@
+[
+  {
+    "query_id": "q1",
+    "query_text": "Can you trade after building on your turn?",
+    "chunks": [
+      {"chunk_id": "c1", "chunk_text": "Yes, trading and building can occur in any order.", "relevant": 1},
+      {"chunk_id": "c2", "chunk_text": "Roads must connect to your network.", "relevant": 0},
+      {"chunk_id": "c3", "chunk_text": "Cities require 3 ore and 2 grain.", "relevant": 0}
+    ],
+    "ground_truth_answer": "Yes, trading and building can occur in any order."
+  },
+  {
+    "query_id": "q2",
+    "query_text": "Can you use a Knight card to move the robber onto the same hex?",
+    "chunks": [
+      {"chunk_id": "c4", "chunk_text": "No, you must move it to a different hex.", "relevant": 1},
+      {"chunk_id": "c5", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0},
+      {"chunk_id": "c6", "chunk_text": "Roads must connect to your network.", "relevant": 0}
+    ],
+    "ground_truth_answer": "No, you must move it to a different hex."
+  },
+  {
+    "query_id": "q3",
+    "query_text": "What happens if two players both reach 10 points in the same round?",
+    "chunks": [
+      {"chunk_id": "c7", "chunk_text": "The player whose turn it is wins immediately.", "relevant": 1},
+      {"chunk_id": "c8", "chunk_text": "Roads must connect to your network.", "relevant": 0},
+      {"chunk_id": "c9", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0}
+    ],
+    "ground_truth_answer": "The player whose turn it is wins immediately."
+  },
+  {
+    "query_id": "q4",
+    "query_text": "Can the robber be placed on a hex with no adjacent settlements?",
+    "chunks": [
+      {"chunk_id": "c10", "chunk_text": "Yes, but it only blocks production — no stealing occurs.", "relevant": 1},
+      {"chunk_id": "c11", "chunk_text": "Cities require 3 ore and 2 grain.", "relevant": 0},
+      {"chunk_id": "c12", "chunk_text": "Roads must connect to your network.", "relevant": 0}
+    ],
+    "ground_truth_answer": "Yes, but it only blocks production — no stealing occurs."
+  },
+  {
+    "query_id": "q5",
+    "query_text": "What happens if someone cuts your Longest Road in half?",
+    "chunks": [
+      {"chunk_id": "c13", "chunk_text": "You lose the title until you rebuild and surpass them.", "relevant": 1},
+      {"chunk_id": "c14", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0},
+      {"chunk_id": "c15", "chunk_text": "Cities cost 3 ore and 2 grain.", "relevant": 0}
+    ],
+    "ground_truth_answer": "You lose the title until you rebuild and surpass them."
+  },
+  {
+    "query_id": "q6",
+    "query_text": "Can you play a Monopoly card and then trade in the same turn?",
+    "chunks": [
+      {"chunk_id": "c16", "chunk_text": "Yes, that’s allowed after the effect resolves.", "relevant": 1},
+      {"chunk_id": "c17", "chunk_text": "Roads must connect to your network.", "relevant": 0},
+      {"chunk_id": "c18", "chunk_text": "Cities require 3 ore and 2 grain.", "relevant": 0}
+    ],
+    "ground_truth_answer": "Yes, that’s allowed after the effect resolves."
+  },
+  {
+    "query_id": "q7",
+    "query_text": "Can you use Road Building to block another player?",
+    "chunks": [
+      {"chunk_id": "c19", "chunk_text": "Yes, as long as your roads follow placement rules.", "relevant": 1},
+      {"chunk_id": "c20", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0},
+      {"chunk_id": "c21", "chunk_text": "Cities cost 3 ore and 2 grain.", "relevant": 0}
+    ],
+    "ground_truth_answer": "Yes, as long as your roads follow placement rules."
+  },
+  {
+    "query_id": "q8",
+    "query_text": "What happens if the bank runs out of a resource type?",
+    "chunks": [
+      {"chunk_id": "c22", "chunk_text": "That resource cannot be given out until someone pays it back.", "relevant": 1},
+      {"chunk_id": "c23", "chunk_text": "Roads must connect to your network.", "relevant": 0},
+      {"chunk_id": "c24", "chunk_text": "Cities require 3 ore and 2 grain.", "relevant": 0}
+    ],
+    "ground_truth_answer": "That resource cannot be given out until someone pays it back."
+  },
+  {
+    "query_id": "q9",
+    "query_text": "Can you play development cards after you roll a 7?",
+    "chunks": [
+      {"chunk_id": "c25", "chunk_text": "Yes, after resolving the robber phase.", "relevant": 1},
+      {"chunk_id": "c26", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0},
+      {"chunk_id": "c27", "chunk_text": "Cities cost 3 ore and 2 grain.", "relevant": 0}
+    ],
+    "ground_truth_answer": "Yes, after resolving the robber phase."
+  },
+  {
+    "query_id": "q10",
+    "query_text": "Can you upgrade a settlement and play a Knight card in the same turn?",
+    "chunks": [
+      {"chunk_id": "c28", "chunk_text": "Yes, if you have enough resources and follow the turn order.", "relevant": 1},
+      {"chunk_id": "c29", "chunk_text": "Roads must connect to your network.", "relevant": 0},
+      {"chunk_id": "c30", "chunk_text": "Settlements cost 1 wood, 1 brick, 1 grain, and 1 sheep.", "relevant": 0}
+    ],
+    "ground_truth_answer": "Yes, if you have enough resources and follow the turn order."
+  }
+]
