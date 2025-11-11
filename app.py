@@ -11,7 +11,7 @@ from pathlib import Path
 import time
 
 from rag_system import RAGSystem
-from config import PDF_PATH, DEFAULT_TOP_K
+from config import PDF_PATH, DEMO_TOP_K
 
 
 # Page configuration - MUST be first Streamlit command
@@ -224,7 +224,7 @@ def main():
             try:
                 answer, context = st.session_state.rag_system.answer_question(
                     user_question,
-                    k=DEFAULT_TOP_K,
+                    k=DEMO_TOP_K,
                     return_context=True
                 )
                 
@@ -262,11 +262,11 @@ def main():
             "Number of sources to retrieve",
             min_value=1,
             max_value=10,
-            value=DEFAULT_TOP_K,
+            value=DEMO_TOP_K,
             help="Higher values provide more context but may include less relevant information"
         )
         
-        if k_value != DEFAULT_TOP_K:
+        if k_value != DEMO_TOP_K:
             st.info(f"Using top-{k_value} retrieval")
         
         st.markdown("---")
