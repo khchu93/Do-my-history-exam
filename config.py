@@ -25,14 +25,12 @@ EMBEDDING_MODEL = "text-embedding-ada-002"
 LLM_MODEL = "gpt-3.5-turbo"
 LLM_TEMPERATURE = 0
 
-# Chunking parameters
-DEFAULT_CHUNK_SIZE = 300
-DEFAULT_CHUNK_OVERLAP = 30
+# Chunking parameters (demo.py)
+DEMO_CHUNK_SIZE = 300
+DEMO_CHUNK_OVERLAP = 30
+DEMO_TOP_K = 3
 
-# Retrieval parameters
-DEFAULT_TOP_K = 3
-
-# Evaluation parameters
+# Evaluation parameters (run_evaluation.py)
 CHUNK_SIZES = [300]
 CHUNK_OVERLAPS = [30]
 TOP_K_VALUES = [3]

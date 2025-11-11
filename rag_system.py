@@ -12,7 +12,7 @@ from langchain_chroma import Chroma
 from document_loader import load_documents
 from chunking import split_text
 from vector_store import prepare_chunks_for_chroma, save_to_chroma, retrieve_top_k
-from config import PROMPT_TEMPLATE, LLM_MODEL, LLM_TEMPERATURE
+from config import PROMPT_TEMPLATE, LLM_MODEL, LLM_TEMPERATURE, DEMO_CHUNK_SIZE, DEMO_CHUNK_OVERLAP
 
 logger = logging.getLogger(__name__)
 
@@ -27,8 +27,8 @@ class RAGSystem:
     def __init__(
         self,
         pdf_path: str,
-        chunk_size: int = 300,
-        chunk_overlap: int = 30,
+        chunk_size: int = DEMO_CHUNK_SIZE,
+        chunk_overlap: int = DEMO_CHUNK_OVERLAP,
         embedding_model: str = "text-embedding-ada-002",
         llm_model: str = LLM_MODEL,
         llm_temperature: float = LLM_TEMPERATURE

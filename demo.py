@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 from rag_system import RAGSystem
-from config import PDF_PATH, DEFAULT_TOP_K
+from config import PDF_PATH, DEMO_TOP_K
 
 
 def print_header():
@@ -79,7 +79,7 @@ def main():
             print("\n🔍 Searching for relevant information...")
             answer, context = rag.answer_question(
                 question, 
-                k=DEFAULT_TOP_K,
+                k=DEMO_TOP_K,
                 return_context=True
             )
             

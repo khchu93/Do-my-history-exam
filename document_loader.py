@@ -31,8 +31,8 @@ def normalize_text(text: str) -> str:
         Normalized text with standardized quotes and collapsed whitespace
     """
     # Convert curly quotes to straight quotes
-    text = text.replace(""", '"').replace(""", '"')
-    text = text.replace("'", "'").replace("'", "'")
+    text = text.replace("“", '"').replace("”", '"')
+    text = text.replace("‘", "'").replace("’", "'")
     
     # Collapse all whitespace (newlines, tabs, multiple spaces) to single space
     text = re.sub(r"\s+", " ", text)
