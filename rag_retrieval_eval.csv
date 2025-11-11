@@ -1,0 +1,2 @@
+chunk_size,chunk_overlap,top_k,avg_dcg,avg_ndcg,num_queries
+300,30,3,0.46966360238866456,0.5261859507142915,10

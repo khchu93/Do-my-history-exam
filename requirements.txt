@@ -1,34 +1,28 @@
-python-dotenv  # For reading environment variables stored in .env file
+# Core dependencies
+langchain>=0.1.0
+langchain-community>=0.0.20
+langchain-openai>=0.0.5
+langchain-chroma>=0.1.0
+langchain-text-splitters>=0.0.1
 
-# LangChain core & community packages (matching versions)
-langchain
-langchain-core
-langchain-community
-langchain-experimental
-langchain-openai  # For embeddings
-langchain-text-splitters
-langchain-chroma
+# Vector store and embeddings
+chromadb>=0.4.22
+openai>=1.10.0
 
 # Document processing
-unstructured  # Document loading
+pypdf>=3.17.4
+python-dotenv>=1.0.0
 
-# Vector storage
-chromadb
+# Evaluation
+ragas>=0.1.0
+datasets>=2.16.0
 
-# LLM / embeddings
-openai
-tiktoken
+# Pattern matching
+pyahocorasick>=2.0.0
 
-# libmagic support to aid DirectoryLoader
-python-magic-bin
+# Data processing
+numpy>=1.24.0
+pandas>=2.0.0
 
-# RAG Evaluation
-ragas
-
-# HuggingFace Evaluate
-evaluate
-scikit-learn    # to use evaluate
-beir            # to use ndcg
-# Notes:
-# install markdown dependencies with:
-# pip install "unstructured[md]"
+# Utilities
+tqdm>=4.66.0

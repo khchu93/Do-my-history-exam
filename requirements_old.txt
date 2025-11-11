@@ -1,0 +1,34 @@
+python-dotenv  # For reading environment variables stored in .env file
+
+# LangChain core & community packages (matching versions)
+langchain
+langchain-core
+langchain-community
+langchain-experimental
+langchain-openai  # For embeddings
+langchain-text-splitters
+langchain-chroma
+
+# Document processing
+unstructured  # Document loading
+
+# Vector storage
+chromadb
+
+# LLM / embeddings
+openai
+tiktoken
+
+# libmagic support to aid DirectoryLoader
+python-magic-bin
+
+# RAG Evaluation
+ragas
+
+# HuggingFace Evaluate
+evaluate
+scikit-learn    # to use evaluate
+beir            # to use ndcg
+# Notes:
+# install markdown dependencies with:
+# pip install "unstructured[md]"
