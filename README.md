@@ -3,7 +3,6 @@
 A production-ready **Retrieval-Augmented Generation (RAG)** system for answering questions about board game manuals. This project demonstrates best practices in RAG system design, evaluation, and deployment.
 
 ![Python](https://img.shields.io/badge/python-3.8+-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ## 🌟 Key Features
 
@@ -17,19 +16,19 @@ A production-ready **Retrieval-Augmented Generation (RAG)** system for answering
 
 ```
 .
-├── config.py              # Configuration and settings
-├── exceptions.py          # Custom exception classes
-├── document_loader.py     # PDF loading and preprocessing
-├── annotation.py          # Ground truth Q&A annotation
-├── chunking.py            # Document chunking and coverage calculation
-├── vector_store.py        # Vector store operations (Chroma)
-├── metrics.py             # Evaluation metrics (DCG/nDCG)
-├── rag_system.py          # Core RAG system (production)
-├── evaluation.py          # Evaluation pipeline
-├── demo.py               # Interactive demo
-├── run_evaluation.py     # Evaluation runner
-├── requirements.txt      # Dependencies
-└── README.md            # This file
+├── config.py               # Configuration and settings
+├── exceptions.py           # Custom exception classes
+├── document_loader.py      # PDF loading and preprocessing
+├── annotation.py           # Ground truth Q&A annotation
+├── chunking.py             # Document chunking and coverage calculation
+├── vector_store.py         # Vector store operations (Chroma)
+├── metrics.py              # Evaluation metrics (DCG/nDCG)
+├── rag_system.py           # Core RAG system (production)
+├── evaluation.py           # Evaluation pipeline
+├── demo.py                 # Interactive demo
+├── run_evaluation.py       # Evaluation runner
+├── requirements.txt        # Dependencies
+└── README.md               # This file
 ```
 
 ## 🚀 Quick Start
@@ -121,39 +120,6 @@ This will:
 - **Context Precision**: Relevance of retrieved chunks to question
 - **Context Recall**: Coverage of ground truth in retrieved context
 
-## 🏗️ System Architecture
-
-```
-┌─────────────┐
-│  User Query │
-└──────┬──────┘
-       │
-       ▼
-┌─────────────────┐
-│ Embedding Model │ (OpenAI Ada-002)
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Vector Search  │ (ChromaDB)
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Top-K Chunks   │
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│   LLM (GPT-3.5) │ + Context
-└────────┬────────┘
-         │
-         ▼
-┌─────────────────┐
-│  Final Answer   │
-└─────────────────┘
-```
-
 ## 🔧 Technical Highlights
 
 ### 1. Efficient Pattern Matching
@@ -174,7 +140,7 @@ Clean separation of concerns:
 - Testable individual modules
 - Production-ready code structure
 
-## 📈 Example Results
+## 📈 Evaluation Results
 
 ```
 Retrieval Evaluation:
@@ -189,21 +155,13 @@ Generation Evaluation:
 └── Context Recall:      0.7423 ± 0.13
 ```
 
-## 🎯 Use Cases
-
-- **Customer Support**: Automated Q&A for product manuals
-- **Education**: Interactive learning from textbooks
-- **Legal/Compliance**: Quick reference for policy documents
-- **Technical Documentation**: Developer Q&A systems
-
 ## 🛠️ Future Enhancements
 
 - [ ] Add support for multi-document retrieval
 - [ ] Implement hybrid search (dense + sparse)
-- [ ] Add streaming responses
-- [ ] Build web interface (Streamlit/Gradio)
-- [ ] Add citation/source tracking
-- [ ] Implement feedback loop for continuous improvement
+- [ ] Build web interface (Streamlit)
+- [ ] Add support for non-english manuals
+- [ ] Allow image inputs
 
 ## 📚 References
 
@@ -211,18 +169,3 @@ Generation Evaluation:
 - **RAGAS Framework**: [Docs](https://docs.ragas.io/)
 - **LangChain**: [Docs](https://python.langchain.com/)
 
-## 📝 License
-
-MIT License - see LICENSE file for details
-
-## 🤝 Contributing
-
-Contributions welcome! Please feel free to submit a Pull Request.
-
-## 📧 Contact
-
-For questions or feedback, please open an issue on GitHub.
-
----
-
-**Built with ❤️ for junior LLM engineer positions**
