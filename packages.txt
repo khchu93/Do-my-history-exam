@@ -1,8 +1,0 @@
-# System-level dependencies for Streamlit Cloud
-# These packages will be installed via apt-get
-
-# Required for some PDF processing libraries
-poppler-utils
-
-# Required for some Python packages
-build-essential
