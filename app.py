@@ -57,11 +57,6 @@ st.markdown("""
         padding: 0.75rem;
     }
     
-    /* Hide form helper text */
-    .stTextInput > label > div[data-testid="stMarkdownContainer"] > p {
-        display: none;
-    }
-    
     /* Expandable sections for better mobile UX */
     .streamlit-expanderHeader {
         font-size: 18px;
@@ -111,6 +106,8 @@ def init_session_state():
         st.session_state.last_qa = None
     if 'last_processed_question' not in st.session_state:
         st.session_state.last_processed_question = ''
+    if 'question_value' not in st.session_state:
+        st.session_state.question_value = ''
 
 
 @st.cache_resource
@@ -217,24 +214,27 @@ def main():
     # Main input area
     st.markdown("#### 💬 What would you like to know about this game?")
     
-    # Use form to handle Enter key properly
-    with st.form(key="question_form", clear_on_submit=True):
-        user_question = st.text_input(
-            "Type your question here...",
-            placeholder=f"e.g., {DEFAULT_QUESTION}",
-            label_visibility="collapsed",
-            key="question_input"
-        )
-        
-        search_clicked = st.form_submit_button(
-            "🔍 Search", 
-            type="primary", 
-            use_container_width=True
-        )
+    # Text input without form
+    user_question = st.text_input(
+        "Type your question here",
+        value=st.session_state.get('question_value', ''),
+        placeholder=f"e.g., {DEFAULT_QUESTION}",
+        label_visibility="collapsed",
+        key="question_input"
+    )
     
-    # Process question when form is submitted
+    # Search button
+    search_clicked = st.button(
+        "🔍 Search", 
+        type="primary", 
+        use_container_width=True
+    )
+    
+    # Process question when button is clicked
     if search_clicked:
         if handle_question(user_question):
+            # Clear the input by updating the value
+            st.session_state.question_value = ''
             st.rerun()
     
     # Display last Q&A if it exists
