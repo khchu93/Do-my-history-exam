@@ -204,7 +204,7 @@ def main():
     
     # Header
     st.markdown("## 🎲 Board Game Q&A Assistant (CATAN)")
-    st.markdown("*Ask me anything about CATAN rules!*")
+    st.markdown("*Ask me anything rules!*")
     # Link button
     st.markdown("Open Rulebook")
     
