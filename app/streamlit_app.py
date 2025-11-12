@@ -108,6 +108,8 @@ def init_session_state():
         st.session_state.last_processed_question = ''
     if 'question_value' not in st.session_state:
         st.session_state.question_value = ''
+    if 'processing' not in st.session_state:
+        st.session_state.processing = False
 
 
 @st.cache_resource
@@ -153,24 +155,25 @@ def format_answer_with_sources(question, answer, context):
 
 def get_answer(question):
     """Get answer for a question and store in session state"""
-    with st.spinner("🤔 Thinking..."):
-        try:
-            answer, context = st.session_state.rag_system.answer_question(
-                question,
-                k=DEMO_TOP_K,
-                return_context=True
-            )
-            
-            # Store the Q&A in session state
-            st.session_state.last_qa = {
-                'question': question,
-                'answer': answer,
-                'context': context
-            }
-            
-        except Exception as e:
-            st.error(f"❌ Error: {str(e)}")
-            st.session_state.last_qa = None
+    try:
+        answer, context = st.session_state.rag_system.answer_question(
+            question,
+            k=DEMO_TOP_K,
+            return_context=True
+        )
+        
+        # Store the Q&A in session state
+        st.session_state.last_qa = {
+            'question': question,
+            'answer': answer,
+            'context': context
+        }
+        st.session_state.processing = False
+        
+    except Exception as e:
+        st.error(f"❌ Error: {str(e)}")
+        st.session_state.last_qa = None
+        st.session_state.processing = False
 
 
 def handle_question(question):
@@ -184,6 +187,11 @@ def handle_question(question):
     # Only process if it's a new question
     if question != st.session_state.last_processed_question:
         st.session_state.last_processed_question = question
+        
+        # Clear previous Q&A immediately and set processing flag
+        st.session_state.last_qa = None
+        st.session_state.processing = True
+        
         get_answer(question)
         return True
     return False
@@ -236,6 +244,12 @@ def main():
             # Clear the input by updating the value
             st.session_state.question_value = ''
             st.rerun()
+    
+    # Show spinner while processing, or show Q&A result
+    if st.session_state.processing or (st.session_state.last_qa is None and st.session_state.last_processed_question):
+        with st.spinner("🤔 Thinking..."):
+            # Small delay to ensure spinner is visible
+            time.sleep(0.1)
     
     # Display last Q&A if it exists
     if st.session_state.last_qa:
