@@ -6,6 +6,7 @@ Usage:
     streamlit run app.py
 """
 
+
 import streamlit as st
 from pathlib import Path
 import time
@@ -28,12 +29,13 @@ st.set_page_config(
     menu_items={
         'Get Help': 'https://github.com/yourusername/rag-board-game-qa',
         'Report a bug': 'https://github.com/yourusername/rag-board-game-qa/issues',
-        'About': "# RAG Q&A System\nPowered by GPT-3.5 and ChromaDB"
+        'About': "# RAG Q&A System\nPowered by GPT-4 and ChromaDB"
     }
 )
 
 # Constants
 DEFAULT_QUESTION = "How do I trade with other players?"
+RULEBOOK_URL = "https://www.catan.com/sites/default/files/2025-03/CN3081%20CATAN%E2%80%93The%20Game%20Rulebook%20secure%20%281%29.pdf"
 
 # Custom CSS for mobile responsiveness
 st.markdown("""
@@ -112,8 +114,6 @@ def init_session_state():
         st.session_state.last_qa = None
     if 'last_processed_question' not in st.session_state:
         st.session_state.last_processed_question = ''
-    if 'question_value' not in st.session_state:
-        st.session_state.question_value = ''
     if 'processing' not in st.session_state:
         st.session_state.processing = False
 
@@ -212,6 +212,7 @@ def main():
     # Header
     st.markdown("## 🎲 Board Game Q&A Assistant (CATAN)")
     st.markdown("*Ask me anything about CATAN rules!*")
+    
     # Link button
     st.link_button(
     "📚 Open CATAN Rulebook (PDF)",
@@ -234,33 +235,33 @@ def main():
     # Main input area
     st.markdown("#### 💬 What would you like to know about this game?")
     
-    # Text input without form
-    user_question = st.text_input(
-        "Type your question here",
-        value=st.session_state.get('question_value', ''),
-        placeholder=f"e.g., {DEFAULT_QUESTION}",
-        label_visibility="collapsed",
-        key="question_input"
-    )
+    # Form for Enter key support and auto-clear
+    with st.form(key="search_form", clear_on_submit=True):
+        col1, col2 = st.columns([4, 1])
+        
+        with col1:
+            user_question = st.text_input(
+                "question_input",
+                placeholder=f"e.g., {DEFAULT_QUESTION}",
+                label_visibility="collapsed"
+            )
+        
+        with col2:
+            submit_button = st.form_submit_button(
+                "🔍 Search",
+                type="primary",
+                use_container_width=True
+            )
     
-    # Search button
-    search_clicked = st.button(
-        "🔍 Search", 
-        type="primary", 
-        use_container_width=True
-    )
+    # Handle form submission
+    if submit_button:
+        if user_question.strip():
+            if handle_question(user_question):
+                st.rerun()
     
-    # Process question when button is clicked
-    if search_clicked:
-        if handle_question(user_question):
-            # Clear the input by updating the value
-            st.session_state.question_value = ''
-            st.rerun()
-    
-    # Show spinner while processing, or show Q&A result
+    # Show spinner while processing
     if st.session_state.processing or (st.session_state.last_qa is None and st.session_state.last_processed_question):
         with st.spinner("🤔 Thinking..."):
-            # Small delay to ensure spinner is visible
             time.sleep(0.1)
     
     # Display last Q&A if it exists
