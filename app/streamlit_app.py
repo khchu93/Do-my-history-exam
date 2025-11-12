@@ -205,7 +205,11 @@ def main():
     # Header
     st.markdown("## 🎲 Board Game Q&A Assistant (CATAN)")
     st.markdown("*Ask me anything about CATAN rules!*")
+    st.markdown("[Open CATAN rulebook here](https://www.catan.com/sites/default/files/2025-03/CN3081%20CATAN%E2%80%93The%20Game%20Rulebook%20secure%20%281%29.pdf)")
+
     
+    url = "https://www.catan.com/sites/default/files/2025-03/CN3081%20CATAN%E2%80%93The%20Game%20Rulebook%20secure%20%281%29.pdf"
+
     # Initialize system
     if not st.session_state.initialized:
         rag, error = load_rag_system()
