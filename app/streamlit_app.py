@@ -204,12 +204,10 @@ def main():
     
     # Header
     st.markdown("## 🎲 Board Game Q&A Assistant (CATAN)")
-    st.write("*Ask me anything about CATAN rules!*")
+    st.markdown("*Ask me anything about CATAN rules!*")
     # Link button
-    st.link_button(
-    "📖 Open CATAN Rulebook (PDF)",
-    "https://github.com/khchu93/Do-my-history-exam/blob/main/data/BoardGamesRuleBook/CATAN.pdf"
-)
+    st.markdown("Open Rulebook")
+    
 
 
     # Initialize system
