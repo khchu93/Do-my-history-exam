@@ -205,25 +205,11 @@ def main():
     # Header
     st.markdown("## 🎲 Board Game Q&A Assistant (CATAN)")
     st.write("*Ask me anything about CATAN rules!*")
-    # Custom styled button using HTML
-    st.markdown(
-    """
-    <a href="https://www.catan.com/sites/default/files/2025-03/CN3081%20CATAN%E2%80%93The%20Game%20Rulebook%20secure%20%281%29.pdf" target="_blank" style="text-decoration: none;">
-        <button style="
-            background-color: #f0f2f6;
-            color: #262730;
-            border: 1px solid #d3d3d3;
-            border-radius: 6px;
-            padding: 0.5rem 1rem;
-            font-size: 14px;
-            cursor: pointer;
-            margin: 0.5rem 0;
-        ">
-            📖 Open CATAN Rulebook (PDF)
-        </button>
-    </a>
-    """,
-    unsafe_allow_html=True)
+    # Link button
+    st.link_button(
+    "📖 Open CATAN Rulebook (PDF)",
+    "https://github.com/khchu93/Do-my-history-exam/blob/main/data/BoardGamesRuleBook/CATAN.pdf"
+)
 
 
     # Initialize system
