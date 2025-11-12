@@ -1,2 +1,2 @@
-chunk_size,chunk_overlap,embedding_model,top_k,answer_correctness_mean,answer_correctness_std,answer_relevancy_mean,answer_relevancy_std,faithfulness_mean,faithfulness_std,context_precision_mean,context_precision_std,context_recall_mean,context_recall_std
-[300],[30],['text-embedding-3-small'],[3],0.5327489417149208,0.1778873284867052,0.9609596853316598,0.04801634577679307,0.4833333333333334,0.3905124837953327,0.7333333332925001,0.3958114028818242,0.9,0.30000000000000004
+chunk_size,chunk_overlap,top_k,answer_correctness_mean,answer_correctness_std,answer_relevancy_mean,answer_relevancy_std,faithfulness_mean,faithfulness_std,context_precision_mean,context_precision_std,context_recall_mean,context_recall_std
+300,30,3,0.5630435192075114,0.2639664474426457,0.9830076261102733,0.024398489290678112,0.35,0.39051248379533277,0.7333333332941667,0.3958114028829471,0.8,0.4

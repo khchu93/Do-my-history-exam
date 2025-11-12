@@ -10,8 +10,8 @@ import streamlit as st
 from pathlib import Path
 import time
 
-from rag_system import RAGSystem
-from config import PDF_PATH, DEMO_TOP_K
+from src.rag_system import RAGSystem
+from src.config import PDF_PATH, DEMO_TOP_K
 
 # Page configuration - MUST be first Streamlit command
 st.set_page_config(

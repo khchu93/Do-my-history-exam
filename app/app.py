@@ -1,0 +1,271 @@
+"""
+Streamlit web interface for the RAG Q&A system.
+Mobile-responsive design optimized for Android phones.
+
+Usage:
+    streamlit run app.py
+"""
+
+import streamlit as st
+from pathlib import Path
+import time
+
+from src.rag_system import RAGSystem
+from src.config import PDF_PATH, DEMO_TOP_K
+
+# Page configuration - MUST be first Streamlit command
+st.set_page_config(
+    page_title="Board Game Q&A Assistant",
+    page_icon="🎲",
+    layout="wide",
+    initial_sidebar_state="collapsed",
+    menu_items={
+        'Get Help': 'https://github.com/yourusername/rag-board-game-qa',
+        'Report a bug': 'https://github.com/yourusername/rag-board-game-qa/issues',
+        'About': "# RAG Q&A System\nPowered by GPT-3.5 and ChromaDB"
+    }
+)
+
+# Constants
+DEFAULT_QUESTION = "How do I trade with other players?"
+
+# Custom CSS for mobile responsiveness
+st.markdown("""
+<style>            
+    /* Mobile-first responsive design */
+    .main {
+        padding: 1rem;
+    }
+    
+    /* Better text readability on mobile */
+    .stMarkdown {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    /* Larger buttons for touch screens */
+    .stButton>button {
+        width: 100%;
+        height: 3rem;
+        font-size: 18px;
+        margin: 0.5rem 0;
+    }
+    
+    /* Better input fields on mobile */
+    .stTextInput>div>div>input {
+        font-size: 16px;
+        padding: 0.75rem;
+    }
+    
+    /* Expandable sections for better mobile UX */
+    .streamlit-expanderHeader {
+        font-size: 18px;
+        font-weight: 600;
+    }
+    
+    /* Answer styling */
+    .answer-box {
+        background-color: #e8f4f8;
+        border-left: 4px solid #1f77b4;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+    
+    /* Source passages */
+    .source-box {
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 1rem;
+        margin: 0.5rem 0;
+        font-size: 14px;
+    }
+    
+    /* Hide Streamlit branding on mobile for cleaner look */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    
+    /* Loading spinner styling */
+    .stSpinner > div {
+        text-align: center;
+        padding: 2rem;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+
+# Initialize session state
+def init_session_state():
+    """Initialize all session state variables"""
+    if 'rag_system' not in st.session_state:
+        st.session_state.rag_system = None
+    if 'initialized' not in st.session_state:
+        st.session_state.initialized = False
+    if 'last_qa' not in st.session_state:
+        st.session_state.last_qa = None
+    if 'last_processed_question' not in st.session_state:
+        st.session_state.last_processed_question = ''
+    if 'question_value' not in st.session_state:
+        st.session_state.question_value = ''
+
+
+@st.cache_resource
+def load_rag_system():
+    """Load RAG system (cached to avoid reloading on every interaction)"""
+    try:
+        with st.spinner("🔄 Initializing AI system... This may take a minute."):
+            rag = RAGSystem(
+                pdf_path=str(PDF_PATH),
+                chunk_size=300,
+                chunk_overlap=30
+            )
+        return rag, None
+    except Exception as e:
+        return None, str(e)
+
+
+def format_answer_with_sources(question, answer, context):
+    """Format question, answer and sources in a mobile-friendly way"""
+    # Display question and answer in the same container
+    st.markdown(f"""
+    <div class="answer-box">
+        <h4>❓ Question</h4>
+        <p>{question}</p>
+        <hr style="margin: 1rem 0; border: none; border-top: 1px solid #ccc;">
+        <h4>💡 Answer</h4>
+        <p>{answer}</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Display sources in expandable section
+    with st.expander("📚 View Source Passages", expanded=False):
+        for i, source in enumerate(context, 1):
+            # Truncate long sources on mobile
+            display_text = source if len(source) < 300 else source[:300] + "..."
+            st.markdown(f"""
+            <div class="source-box">
+                <strong>Source {i}:</strong><br>
+                {display_text}
+            </div>
+            """, unsafe_allow_html=True)
+
+
+def get_answer(question):
+    """Get answer for a question and store in session state"""
+    with st.spinner("🤔 Thinking..."):
+        try:
+            answer, context = st.session_state.rag_system.answer_question(
+                question,
+                k=DEMO_TOP_K,
+                return_context=True
+            )
+            
+            # Store the Q&A in session state
+            st.session_state.last_qa = {
+                'question': question,
+                'answer': answer,
+                'context': context
+            }
+            
+        except Exception as e:
+            st.error(f"❌ Error: {str(e)}")
+            st.session_state.last_qa = None
+
+
+def handle_question(question):
+    """Process a question if it's new"""
+    question = question.strip()
+    
+    # Use default question if empty
+    if not question:
+        question = DEFAULT_QUESTION
+    
+    # Only process if it's a new question
+    if question != st.session_state.last_processed_question:
+        st.session_state.last_processed_question = question
+        get_answer(question)
+        return True
+    return False
+
+
+def main():
+    """Main application function"""
+    # Initialize session state
+    init_session_state()
+    
+    # Header
+    st.markdown("## 🎲 Board Game Q&A Assistant (CATAN)")
+    st.markdown("*Ask me anything about CATAN rules!*")
+    
+    # Initialize system
+    if not st.session_state.initialized:
+        rag, error = load_rag_system()
+        if error:
+            st.error(f"❌ Failed to initialize system: {error}")
+            st.info("💡 Make sure your PDF and .env file are configured correctly.")
+            st.stop()
+        st.session_state.rag_system = rag
+        st.session_state.initialized = True
+        st.success("✅ System ready!")
+        time.sleep(0.5)
+        st.rerun()
+    
+    # Main input area
+    st.markdown("#### 💬 What would you like to know about this game?")
+    
+    # Text input without form
+    user_question = st.text_input(
+        "Type your question here",
+        value=st.session_state.get('question_value', ''),
+        placeholder=f"e.g., {DEFAULT_QUESTION}",
+        label_visibility="collapsed",
+        key="question_input"
+    )
+    
+    # Search button
+    search_clicked = st.button(
+        "🔍 Search", 
+        type="primary", 
+        use_container_width=True
+    )
+    
+    # Process question when button is clicked
+    if search_clicked:
+        if handle_question(user_question):
+            # Clear the input by updating the value
+            st.session_state.question_value = ''
+            st.rerun()
+    
+    # Display last Q&A if it exists
+    if st.session_state.last_qa:
+        format_answer_with_sources(
+            st.session_state.last_qa['question'],
+            st.session_state.last_qa['answer'],
+            st.session_state.last_qa['context']
+        )
+    
+    # Quick question suggestions
+    st.markdown("#### 🔍 Popular Questions:")
+    
+    example_questions = [
+        "How do you win the game?",
+        "What happens when you roll a 7?",
+        "How do you build a settlement?",
+        "What is the longest road?",
+        "How many resource cards can you have?"
+    ]
+    
+    # Create a grid of question buttons (2 per row on mobile)
+    cols = st.columns(2)
+    for idx, question in enumerate(example_questions):
+        with cols[idx % 2]:
+            if st.button(question, key=f"example_{idx}", use_container_width=True):
+                if handle_question(question):
+                    st.rerun()
+    
+    st.markdown("---")
+
+
+if __name__ == "__main__":
+    main()

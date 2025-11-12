@@ -8,8 +8,8 @@ Usage:
 import sys
 from pathlib import Path
 
-from rag_system import RAGSystem
-from config import PDF_PATH, DEMO_TOP_K
+from src.rag_system import RAGSystem
+from src.config import PDF_PATH, DEMO_TOP_K
 
 
 def print_header():
