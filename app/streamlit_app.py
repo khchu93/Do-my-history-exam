@@ -210,9 +210,12 @@ def main():
     
     # Header
     st.markdown("## 🎲 Board Game Q&A Assistant (CATAN)")
-    st.markdown("*Ask me anything rules!*")
+    st.markdown("*Ask me anything about CATAN rules!*")
     # Link button
-    st.markdown("Open Rulebook")
+    st.link_button(
+    "📖 Open CATAN Rulebook (PDF)",
+    "https://www.catan.com/sites/default/files/2025-03/CN3081%20CATAN%E2%80%93The%20Game%20Rulebook%20secure%20%281%29.pdf"
+)
     
 
 
