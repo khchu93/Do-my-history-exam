@@ -255,9 +255,9 @@ def main():
     
     # Handle form submission
     if submit_button:
-        if user_question.strip():
-            if handle_question(user_question):
-                st.rerun()
+        question_to_ask = user_question.strip() if user_question.strip() else DEFAULT_QUESTION
+        if handle_question(question_to_ask):
+            st.rerun()
     
     # Show spinner while processing
     if st.session_state.processing or (st.session_state.last_qa is None and st.session_state.last_processed_question):
