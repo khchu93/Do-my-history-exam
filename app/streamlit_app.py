@@ -18,7 +18,7 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from src.rag_system import RAGSystem
-from src.config import PDF_PATH, DEMO_TOP_K, PROMPT_TEMPLATE
+from src.config import PDF_PATH, DEMO_CHUNK_SIZE, DEMO_CHUNK_OVERLAP, DEMO_TOP_K, PROMPT_TEMPLATE
 
 # Page configuration - MUST be first Streamlit command
 st.set_page_config(
@@ -125,8 +125,8 @@ def load_rag_system():
         with st.spinner("🔄 Initializing AI system... This may take a minute."):
             rag = RAGSystem(
                 pdf_path=str(PDF_PATH),
-                chunk_size=300,
-                chunk_overlap=30
+                chunk_size=DEMO_CHUNK_SIZE, 
+                chunk_overlap=DEMO_CHUNK_OVERLAP
             )
         return rag, None
     except Exception as e:

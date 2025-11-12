@@ -18,7 +18,7 @@ sys.path.insert(0, str(project_root))
 from src.document_loader import load_documents
 from src.chunking import split_text
 from src.vector_store import prepare_chunks_for_chroma, save_to_chroma, retrieve_top_k
-from src.config import LLM_MODEL, LLM_TEMPERATURE, DEMO_CHUNK_SIZE, DEMO_CHUNK_OVERLAP
+from src.config import LLM_MODEL, LLM_TEMPERATURE
 from src.prompts import PROMPT_TEMPLATES
 
 logger = logging.getLogger(__name__)
@@ -34,8 +34,8 @@ class RAGSystem:
     def __init__(
         self,
         pdf_path: str,
-        chunk_size: int = DEMO_CHUNK_SIZE,
-        chunk_overlap: int = DEMO_CHUNK_OVERLAP,
+        chunk_size: int = 300,
+        chunk_overlap: int = 30,
         embedding_model: str = "text-embedding-ada-002",
         llm_model: str = LLM_MODEL,
         llm_temperature: float = LLM_TEMPERATURE

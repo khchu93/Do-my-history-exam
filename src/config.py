@@ -30,9 +30,9 @@ EMBEDDING_MODEL = "text-embedding-ada-002"
 LLM_MODEL = "gpt-3.5-turbo"
 LLM_TEMPERATURE = 0
 
-# Chunking parameters (demo.py)
+# Chunking parameters (demo.py and streamlit_app.py)
 DEMO_CHUNK_SIZE = 300
-DEMO_CHUNK_OVERLAP = 30
+DEMO_CHUNK_OVERLAP = 40
 DEMO_TOP_K = 3
 
 # Evaluation parameters (run_evaluation.py)
