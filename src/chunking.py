@@ -83,9 +83,9 @@ def compute_overlap(span_start: int, span_end: int, chunk_start: int, chunk_end:
     Compute character overlap between a relevance span and a chunk.
     
     Example:
-        Span:  [10, 30)  (relevant text from annotation)
-        Chunk: [20, 50)  (text chunk)
-        Overlap: [20, 30) = 10 characters
+        Span:  [10, 30]  (relevant text from annotation)
+        Chunk: [20, 50]  (text chunk)
+        Overlap: [20, 30] = 10 characters
     
     Args:
         span_start: Start index of relevance span
@@ -109,7 +109,7 @@ def generate_relevant_chunks_with_coverage(chunks: List[Document]) -> List[Docum
     
     Why coverage?
     - Measures "how much of the relevant content is in this chunk"
-    - Coverage=1.0: entire relevant span is in the chunk (perfect)
+    - Coverage=1.0: entire relevant span is in the chunk
     - Coverage=0.5: only half the relevant content is present
     - Coverage=0.0: chunk doesn't contain relevant content
     

@@ -60,7 +60,10 @@ def prepare_chunks_for_chroma(chunks: List[Document]) -> List[Document]:
         raise VectorStoreError(f"Failed to prepare chunks: {str(e)}") from e
 
 
-def save_to_chroma(chunks: List[Document], embedding_model: str = "text-embedding-ada-002") -> Tuple[Chroma, str]:
+def save_to_chroma(
+    chunks: List[Document], 
+    embedding_model: str = "text-embedding-ada-002", 
+    persist_dir: str = None) -> Tuple[Chroma, str]:
     """
     Create and persist Chroma vector store.
     
@@ -81,7 +84,9 @@ def save_to_chroma(chunks: List[Document], embedding_model: str = "text-embeddin
     """
     try:
         # Create an isolated temporary directory
-        tmp_dir = tempfile.mkdtemp(prefix="chroma_eval_")
+        # tmp_dir = tempfile.mkdtemp(prefix="chroma_eval_")
+        if persist_dir is None:
+            persist_dir = tempfile.mkdtemp(prefix="chroma_eval_")
 
         # Initialize embedding model
         embeddings = OpenAIEmbeddings(model=embedding_model)
@@ -90,12 +95,12 @@ def save_to_chroma(chunks: List[Document], embedding_model: str = "text-embeddin
         db = Chroma.from_documents(
             documents=chunks,
             embedding=embeddings,
-            persist_directory=tmp_dir,
+            persist_directory=persist_dir,
             collection_metadata={"hnsw:space": "ip"}
         )
 
-        logger.info(f"Temporary Chroma DB created at: {tmp_dir}")
-        return db, tmp_dir
+        logger.info(f"Temporary Chroma DB created at: {persist_dir}")
+        return db, persist_dir
         
     except Exception as e:
         logger.error(f"Vector store creation failed: {str(e)}")
