@@ -17,7 +17,8 @@
 ## 🚀 **[Try the Live Demo →](https://broadgame-question-and-answer.streamlit.app/)**
 
 <div align="center">
-  <img src="[assets/demo.gif](https://github.com/khchu93/NoteImage/blob/main/board_game_demo.gif)" alt="Board Game Q&A Demo" width="800"/>
+  <img src="https://raw.githubusercontent.com/khchu93/NoteImage/main/board_game_demo.gif" 
+       alt="Board Game Q&A Demo" width="800"/>
   <p><em>Mobile-responsive Streamlit interface for instant board game rules lookup</em></p>
 </div>
 
