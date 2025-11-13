@@ -69,10 +69,8 @@
 - Installable Python package structure
 
 ### 2️⃣ **Comprehensive Evaluation Pipeline**
-- **Retrieval evaluation**: Coverage-based metrics (DCG/nDCG)
-- **Generation evaluation**: RAGAS framework (5 metrics)
-- Ground truth integration with Aho-Corasick pattern matching
-- Grid search for hyperparameter optimization
+- **Retrieval evaluation**: Coverage-based metrics (DCG/nDCG/MRR/Mean MRS/Mean HitRate@K)
+- **Generation evaluation**: RAGAS metrics (5 metrics)
 
 ### 3️⃣ **Novel Approach to Relevance Scoring**
 - Handles relevance spans that cross chunk boundaries
@@ -93,8 +91,8 @@
 <td width="50%">
 
 **🤖 LLM & Embeddings**
-- OpenAI GPT-4o-mini (generation)
-- text-embedding-3-small (embeddings)
+- OpenAI GPT-3.5-turbo (generation)
+- text-embedding-ada-002 (embeddings)
 - LangChain framework
 
 </td>
@@ -103,7 +101,6 @@
 **💾 Vector Database**
 - ChromaDB (vector store)
 - Cosine similarity search
-- Persistent storage
 
 </td>
 </tr>
@@ -112,16 +109,13 @@
 
 **📊 Evaluation**
 - RAGAS (generation metrics)
-- Custom DCG/nDCG (retrieval)
-- Aho-Corasick (ground truth matching)
+- DCG/nDCG/MRR/Mean MRS/Mean HitRate@K (retrieval)
 
 </td>
 <td>
 
 **🎨 Interface**
-- Streamlit (web app)
-- Mobile-first responsive design
-- Click CLI (terminal interface)
+- Streamlit (web app & Mobile)
 
 </td>
 </tr>
