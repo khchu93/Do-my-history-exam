@@ -1,35 +1,30 @@
-# 🎲 Board Game Q&A Assistant - RAG System
+# 🎲 Board Game Q&A Chatbot (CATAN) - RAG System with GPT-3.5 Turbo
 
-> **A production-ready Retrieval-Augmented Generation (RAG) system that answers questions about board game manuals with 85%+ faithfulness and comprehensive evaluation metrics.**
+> **A Retrieval-Augmented Generation (RAG) system that answers questions about the board game "CATAN" manuals with 85%+ faithfulness and comprehensive evaluation metrics.**
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://rag-board-game.streamlit.app/)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+## ⚡ **TL;DR**
 
----
-
-## ⚡ **TL;DR** (30-second overview)
-
-**What it does:** AI chatbot that instantly answers questions about board game rules  
-**Tech Stack:** OpenAI GPT-4 + LangChain + ChromaDB + Streamlit  
-**Key Results:** 85.7% faithfulness score | 52.6% retrieval accuracy (nDCG)  
-**Try it now:** [**Live Demo →**](https://rag-board-game.streamlit.app/) (works on mobile!)  
+**What it does:** AI chatbot that answers questions about the board game "CATAN" rules  
+**Tech Stack:** OpenAI GPT-3.5 Turbo + LangChain + ChromaDB + Streamlit  
+**Key Results:** XX.X% faithfulness score | XX.X% retrieval accuracy (nDCG)  TBD
+**Try it now:** [**Live Demo →**](https://broadgame-question-and-answer.streamlit.app/) (works on mobile!)  
 **Why it matters:** Full RAG pipeline with comprehensive evaluation (retrieval + generation metrics)
 
 👇 *Scroll for detailed breakdown, evaluation methodology, and code walkthrough*
 
 ---
 
-## 🚀 **[Try the Live Demo →](https://rag-board-game.streamlit.app/)**
+## 🚀 **[Try the Live Demo →](https://broadgame-question-and-answer.streamlit.app/)**
 
 <div align="center">
-  <img src="assets/demo-screenshot.png" alt="Board Game Q&A Demo" width="800"/>
+  <img src="[assets/demo.gif](https://github.com/khchu93/NoteImage/blob/main/board_game_demo.gif)" alt="Board Game Q&A Demo" width="800"/>
   <p><em>Mobile-responsive Streamlit interface for instant board game rules lookup</em></p>
 </div>
 
 ### ✨ **Key Highlights**
 
 ```
-📱 Live Demo         → Deployed Streamlit app with mobile-responsive UI
+📱 Live Demo          → Deployed Streamlit app with mobile-responsive UI
 🎯 85%+ Accuracy     → Faithfulness score of 0.857 on RAGAS metrics
 📊 Full Evaluation   → Both retrieval (nDCG) and generation (RAGAS) metrics
 🔍 Smart Retrieval   → Coverage-based relevance scoring with Aho-Corasick algorithm
@@ -91,7 +86,7 @@
 <td width="50%">
 
 **🤖 LLM & Embeddings**
-- OpenAI GPT-3.5-turbo (generation)
+- OpenAI GPT-3.5 turbo (generation)
 - text-embedding-ada-002 (embeddings)
 - LangChain framework
 
