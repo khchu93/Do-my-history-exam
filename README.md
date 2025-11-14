@@ -95,8 +95,8 @@ graph LR
 <tr>
 <td width="50%">
 
-**LLM & Embeddings**
-- GPT-3.5 turbo (generation, chatbot, ragas evaluation)
+**LLM**
+- GPT-3.5 Turbo (generation, chatbot, ragas evaluation)
 - text-embedding-ada-002 (embeddings)
 - LangChain framework
 
@@ -127,6 +127,62 @@ graph LR
 </table>
 
 ---
+
+### **Design Decisions**
+
+<table>
+<tr>
+<td width="50%">
+
+**Chunking (125 size / 120 overlap / top-k=5)**
+
+Board game manuals contain short, dense rule sentences.<br>
+This configuration maximized retrieval accuracy because:<br>
+- high overlap preserves rule integrity
+- moderate chunk size avoids fragmented meaning
+- small k reduces irrelevant noise
+
+</td>
+<td width="50%">
+
+**Cosine similarity**
+
+Compared cosine, L2, inner product — all similar results.<br>
+Kept cosine because:<br>
+- widely used in embedding-based retrieval
+- stable and predictable
+- excellent support in ChromaDB
+
+</td>
+</tr>
+<tr>
+<td>
+
+**GPT-3.5-Turbo**
+
+Chosen for:<br>
+- low cost during hyperparameter search
+- deterministic behavior at temperature 0
+- high enough quality for constrained, rule-grounded answers
+
+</td>
+<td>
+
+**ChromaDB**
+
+Chosen because it is:<br>
+- fast and lightweight
+- persistent without needing a server
+- integrates smoothly with LangChain
+- ideal for experiment-heavy RAG workflows
+
+</td>
+</tr>
+</table>
+
+---
+
+
 ### Metric Detail
 #### Retrieval Metrics
 
@@ -158,62 +214,55 @@ graph LR
 
 ---
 
-### **Performance Results**
+### **Evaluation Results**
 
 #### **Retrieval Evaluation**
-> 📈 **Using a dataset of 10 questions, we present the following chart summarizing the retrieval evaluation results:**
+> 📈 **Retrieval Evaluation (10-question annotated dataset)**
 <img src="https://github.com/khchu93/NoteImage/blob/main/board_game_eval_heatmap.png" width="900" />
 <img src="https://github.com/khchu93/NoteImage/blob/main/board_game_eval_all.PNG" width="900" />
 
-| Metric | Description | Scale |
-|:--------|:----------------|:-----|
-| **Average NDCG(Normalized Discounted Cumulative Gain)** | Measures how well the retrieved chunks are ranked compared to an ideal. | 0 - 1 |
-| **MRR(Mean Reciprocal Rank)** | Captures how early the first relevant chunk appears in the ranking, with higher values meaning earlier retrieval. | 0 - 1 |
-| **Overall MRS(Mean Retrieval Similarity)** | Indicates the proportion of queries where at least one relevant chunk appears within the top-k results. | 0 - 1 |
-| **Mean HitRate@K** | Represents the average similarity score of the top-k retrieved chunks across all queries. | 0 - 1 |
-
-Summary metrics are calculated as follows:
-| Summary Metric | Equation |
-|:--------|:----------------|
-| **Average** | 0.2 x Average NDCG + 0.2 x MRR + 0.2 x Overall MRS + 0.2 x Mean HitRate@K |
-| **Ranking Prioritize** | 0.4 x Average NDCG + 0.4 x MRR + 0.1 x Overall MRS + 0.1 x Mean HitRate@K |
-
-Best hyperparameter combination with a dataset of 10 questions
-| Summary Metric | Chunk Size | Chunk Overlap | Top k | Scores |
-|:--------|:----------------|:-----|:-----|:----|
-| **Average** | 125 | 120 | 5 | 0.7874 |
-| **Prioritize Ranking** | 125 | 120 | 5 | 0.7647 |
+|  | Chunk Size | Chunk Overlap | Top k |
+|--|--|--|--|
+|Best Combination: | 125 | 120 | 5 |
  
 #### **Generation Evaluation (RAGAS)**
+> 📈 **Generation Evaluation (RAGAS, 40-question dataset using optimal retrieval settings)**
 
-> 📈 **Using a dataset of 40 questions and the best hyperparameter combination identified during retrieval evaluation, we obtained the following results for the generation evaluation:**
+|  | Faithfulness | Answer Relevancy | Answer Correctness | Context Precision | Context Recall |
+|--|--|--|--|--|--|
+|Score: | 0.7583 | 0.9773 | 0.6354 | 0.95 | 0.95 |
 
-| RAGAS Metric | Description | Scale | Score |
-|:--------|:-------|:------------------|:----|
-| **Faithfulness** | Assesses whether the answer is consistent with the retrieved context, without hallucination. | 0 - 1 |  |
-| **Answer Relevancy** | Captures how relevant the generated answer is to the user’s question. | 0 - 1 |  |
-| **Answer Correctness** | Measures whether the model’s answer is factually correct based on the reference. | 0 - 1  |  |
-| **Context Precision** | Fraction of retrieved chunks that are actually relevant to the question. | 0 - 1  |  |
-| **Context Recall** | Fraction of all relevant chunks that were successfully retrieved. | 0 - 1  |  |
-
-| Metric | Score |
-|:--------|:----------------|
-| **Average NDCG(Normalized Discounted Cumulative Gain)** | |
-| **MRR(Mean Reciprocal Rank)** | |
-| **Overall MRS(Mean Retrieval Similarity)** | |
-| **Mean HitRate@K** | |
 ---
 
+### Current Limitations
+1. **Only supports one rulebook at a time**<br>
+    The Streamlit UI defaults to CATAN; no multi-manual support yet.
+2. **Q&A dataset has mostly 1 relevant chunk per question**<br>
+    Board game rules tend to be concise single-sentence statements.
+3. **Retrieval sometimes returns 0 relevant chunks**<br>
+    Likely due to:
+    - chunk boundaries
+    - embedding limitations
+    - semantic overlap issues
+4. **RAGAS debugging is difficult**<br>
+    When evaluating multiple parameter combinations, some rows in
+    `rag_generation_eval.csv` becomes blank due to:
+    - token limits
+    - silent failures
+    - scoring edge cases
+5. **UI lacks feature toggles**<br>
+    No user-adjustable chunking settings or model options (planned).
 
+---
 
 ### **Project Structure**
 
 ```
 rag-board-game-qa/
 ├─── demo.py                       # Demo
-├── 📱 app/
+├── app/
 │   ├── streamlit_app.py           # Web interface
-├── 💻 src/
+├── src/
 │   ├── __init__.py                # Version control
 │   ├── rag_system.py              # Core RAG pipeline
 │   ├── document_loader.py         # PDF processing
@@ -223,15 +272,15 @@ rag-board-game-qa/
 │   ├── exception.py               # Exception management
 │   ├── prompts.py                 # Prompts templates management
 │   └── config.py                  # Configuration management
-├── 🔬 evaluation/
+├── evaluation/
 │   ├── __init__.py                # Version control
 │   ├── evaluation.py              # Evaluation pipeline
 │   ├── metrics.py                 # DCG/nDCG implementation
 │   ├── run_evaluation.py          # Evaluation runner
 │   └── results_csv/               # CSV outputs
-├── 📊 data/
+├── data/
 │   └── BoardGamesRuleBook/        # Game manuals & test data
-└── 📓 notebooks/
+└── notebooks/
     └── rag_experiments.ipynb      # Analysis & visualization
 ```
 
@@ -239,7 +288,7 @@ rag-board-game-qa/
 
 ### **Quick Start**
 
-#### **1. Try the Online Demo**
+#### **1. Live Demo**
 Visit **[Link](https://rag-board-game.streamlit.app/)**
 
 #### **2. Run Locally**
@@ -265,19 +314,6 @@ streamlit run app/streamlit_app.py
 # OR run CLI demo
 python app/demo.py
 ```
-
----
-
-
-
-#### **Pipeline Overview**
-
-1. **Document Processing**: PDF manuals chunked into 300-token segments with 30-token overlap
-2. **Embedding**: Chunks embedded using OpenAI's `text-embedding-3-small`
-3. **Storage**: Vectors stored in ChromaDB with metadata
-4. **Retrieval**: User query embedded → cosine similarity search → top-5 chunks
-5. **Generation**: GPT-3.5-Turbo synthesizes answer from retrieved context
-6. **Evaluation**: Traditional retrieval eval metrics + RAGAS generation eval metrics validate quality
 
 ---
 
@@ -334,36 +370,25 @@ PROMPT_TEMPLATE = "default"
 ---
 
 ### **What I Learned**
-
-#### **Technical Skills**
-- Designing and implementing RAG systems with LangChain + Chroma + OpenAI
-- Retrieval + Generation Evaluation
-- RAG system's hyperparameter tuning
-- Prompt engineering for consistent LLM outputs
-
-#### **Software Engineering**
-- Modular architecture for maintainability
-- Proper error handling and logging
-- Configuration management best practices
-- Git workflow and documentation
-
-#### **Evaluation & Metrics**
-- Coverage-based relevance scoring (binary vs grade score)
-- Position-aware ranking (DCG/nDCG)
-- RAGAS
-- Ground truth annotation strategies
+- Designing full RAG pipelines
+- Retrieval + generation evaluation methodology
+- Chunking and embedding optimization
+- Prompt engineering for rule-faithful answers
+- Building modular, production-style Python systems
+- Creating reliable custom evaluation datasets
+- Using RAGAS for grounded LLM evaluation
+- Visualization and experiment tracking
 
 ---
 
-### **To Explore**
-- [ ] Experiment with different prompt templates to improve answer quality
-- [ ] Test alternative text splitters (currently using character-level; consider token-, subword-, or word-level splitting)
-
 ### **Future Enhancements**
 
-- [ ] Support board game rulebook upload
-- [ ] Support capturing rulebooks via cellphone camera (image input)
-- [ ] Support for multi-language rulebooks
-- [ ] Query expansion and reformulation
+- [ ] Multi-rulebook support
+- [ ] Rulebook upload in UI
+- [ ] OCR for photographed manuals
+- [ ] Multilingual rulebook support
+- [ ] Query rewriting / semantic expansion
+- [ ] More advanced chunking strategies
+- [ ] More advanced prompt template strategies
 
 ---
