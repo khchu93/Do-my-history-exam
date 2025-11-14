@@ -37,7 +37,7 @@ Explore the **"Popular Questions"** section and click any question to auto-fill 
 - **Chunk Overlap:** 120  
 - **Top-K:** 5  
 - **Similarity search:** Cosine  
-These achieved the highest average retrieval score across [nDCG](#Retrieval Metrics), [MRR](#Retrieval Metrics), [Overall MRS](#Retrieval Metrics), and [Mean HitRate@K](#Retrieval Metrics).
+These achieved the highest average retrieval score across [nDCG](#Retrieval Metrics), [MRR](#Retrieval-Metrics), [Overall MRS](#Retrieval Metrics), and [Mean HitRate@K](#Retrieval Metrics).
 
 | Summary Metric | Chunk | Overlap | Top-K | Score |
 |----------------|--------|----------|--------|--------|
