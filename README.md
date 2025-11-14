@@ -47,11 +47,11 @@ These achieved the highest average retrieval score across [nDCG](#Retrieval-Metr
 #### **Generation Evaluation (RAGAS, 40 Qs)**
 | Metric | Score |
 |--------|--------|
-| [Faithfulness](#Generation-Metrics) | XX.X% |
-| [Answer Relevancy](#Generation-Metrics) | XX.X% |
-| [Answer Correctness](#Generation-Metrics) | XX.X% |
-| [Context Precision](#Generation-Metrics) | XX.X% |
-| [Context Recall](#Generation-Metrics) | XX.X% |
+| [Faithfulness](#Summary-Metrics) | XX.X% |
+| [Answer Relevancy](#Summary-Metrics) | XX.X% |
+| [Answer Correctness](#Summary-Metrics) | XX.X% |
+| [Context Precision](#Summary-Metrics) | XX.X% |
+| [Context Recall](#Summary-Metrics) | XX.X% |
 
 
 
@@ -65,7 +65,7 @@ These achieved the highest average retrieval score across [nDCG](#Retrieval-Metr
 | **Overall MRS(Mean Retrieval Similarity)** | Measures the average semantic similarity between queries and top-k retrieved chunks | 0 - 1 | Shows how semantically close retrieved chunks are to the query. |
 | **Mean HitRate@K** | Measures how often top-k contains at least one relevant chunk. | 0 - 1 | Shows whether top-k consistently includes a relevant chunk |
 
-Summary metrics are calculated as follows:
+#### Summary Metrics
 | Summary Metric | Equation |
 |:--------|:----------------|
 | **Average** | 0.2 x Average NDCG + 0.2 x MRR + 0.2 x Overall MRS + 0.2 x Mean HitRate@K |
