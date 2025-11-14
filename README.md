@@ -71,7 +71,7 @@ Best hyperparameter combination with a dataset of 10 questions
 <td width="50%">
 
 **LLM & Embeddings**
-- GPT-3.5 turbo (generation)
+- GPT-3.5 turbo (generation, chatbot, ragas evaluation)
 - text-embedding-ada-002 (embeddings)
 - LangChain framework
 
@@ -247,10 +247,9 @@ PROMPT_TEMPLATE = "default"
 ### **What I Learned**
 
 #### **Technical Skills**
-- Designing and implementing production RAG systems
-- Comprehensive evaluation (beyond just "does it work?")
-- Balancing precision vs. recall in retrieval
-- Optimizing chunk size and overlap strategies
+- Designing and implementing RAG systems with LangChain + Chroma + OpenAI
+- Retrieval + Generation Evaluation
+- RAG system's hyperparameter tuning
 - Prompt engineering for consistent LLM outputs
 
 #### **Software Engineering**
@@ -260,9 +259,9 @@ PROMPT_TEMPLATE = "default"
 - Git workflow and documentation
 
 #### **Evaluation & Metrics**
-- Coverage-based relevance scoring
+- Coverage-based relevance scoring (binary vs grade score)
 - Position-aware ranking (DCG/nDCG)
-- Multi-dimensional generation quality (RAGAS)
+- RAGAS
 - Ground truth annotation strategies
 
 ---
