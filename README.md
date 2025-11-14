@@ -32,11 +32,12 @@ Explore the **"Popular Questions"** section and click any question to auto-fill 
 
 ### Key Results
 
-#### **Best Retrieval Settings**
+#### **Best Retrieval Settings**<br>
+*Selected through retrieval evaluation across multiple chunk sizes, overlaps, and top-k values, using a 10-question ground-truth Q&A dataset derived from the CATAN rulebook.*
 - **Chunk Size:** 125  
 - **Chunk Overlap:** 120  
 - **Top-K:** 5  
-- **Similarity search:** Cosine  
+- **Similarity search:** Cosine  <br>
 These achieved the highest average retrieval score across [nDCG](#Retrieval-Metrics), [MRR](#Retrieval-Metrics), [Overall-MRS](#Retrieval-Metrics), and [Mean HitRate@K](#Retrieval-Metrics).
 
 | Summary Metric | Chunk | Overlap | Top-K | Score |
@@ -44,14 +45,16 @@ These achieved the highest average retrieval score across [nDCG](#Retrieval-Metr
 | [Average](#Retrieval-Metrics) | 125 | 120 | 5 | **0.7874** |
 | [Prioritize Ranking](#Retrieval-Metrics) | 125 | 120 | 5 | **0.7647** |
 
-#### **Generation Evaluation (RAGAS, 40 Qs)**
-| Metric | Score |
+#### **Generation Evaluation (RAGAS)**
+*RAGAS scores computed using a 40-question custom Q&A dataset grounded in the official CATAN rulebook, designed to evaluate answer faithfulness, relevancy, correctness, and context quality.*
+
+| RAGAS Metric | Score |
 |--------|--------|
-| [Faithfulness](#Summary-Metrics) | XX.X% |
-| [Answer Relevancy](#Summary-Metrics) | XX.X% |
-| [Answer Correctness](#Summary-Metrics) | XX.X% |
-| [Context Precision](#Summary-Metrics) | XX.X% |
-| [Context Recall](#Summary-Metrics) | XX.X% |
+| [Faithfulness](#Summary-Metrics) | **75.83%** |
+| [Answer Relevancy](#Summary-Metrics) | **97.73%** |
+| [Answer Correctness](#Summary-Metrics) | **63.54%** |
+| [Context Precision](#Summary-Metrics) | **95.00%** |
+| [Context Recall](#Summary-Metrics) | **95.00%** |
 
 
 
