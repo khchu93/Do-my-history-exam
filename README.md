@@ -30,7 +30,7 @@ Explore the **"Popular Questions"** section and click any question to auto-fill 
 
 ---
 
-### Key Results (At a Glance)
+### Key Results
 
 #### **Best Retrieval Settings**
 - **Chunk Size:** 125  
@@ -71,7 +71,7 @@ Summary metrics are calculated as follows:
 | **Average** | 0.2 x Average NDCG + 0.2 x MRR + 0.2 x Overall MRS + 0.2 x Mean HitRate@K |
 | **Ranking Prioritize** | 0.4 x Average NDCG + 0.4 x MRR + 0.1 x Overall MRS + 0.1 x Mean HitRate@K |
 
-[Back](#Key-Results-(At-a-Glance))
+[Back](#Key-Results)
 #### Generation Metrics
 ---
 
