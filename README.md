@@ -260,6 +260,9 @@ Chosen because it is:<br>
 ```
 rag-board-game-qa/
 ├─── demo.py                       # Demo
+├─── rag_experiments.ipynb         # Analysis & visualization
+├── .streamlit/
+│   ├── config.toml                # Web UI setup
 ├── app/
 │   ├── streamlit_app.py           # Web interface
 ├── src/
@@ -279,9 +282,7 @@ rag-board-game-qa/
 │   ├── run_evaluation.py          # Evaluation runner
 │   └── results_csv/               # CSV outputs
 ├── data/
-│   └── BoardGamesRuleBook/        # Game manuals & test data
-└── notebooks/
-    └── rag_experiments.ipynb      # Analysis & visualization
+    └── BoardGamesRuleBook/        # Game manuals & test data
 ```
 
 ---
