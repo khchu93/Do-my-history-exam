@@ -255,30 +255,33 @@ Chosen because it is:<br>
 
 ```
 rag-board-game-qa/
-├─── demo.py                       # Demo
-├─── rag_experiments.ipynb         # Analysis & visualization
+├─── demo.py                               # Demo
+├─── rag_experiments.ipynb                 # Analysis & visualization
 ├── .streamlit/
-│   ├── config.toml                # Web UI setup
+│   ├── config.toml                        # Web UI setup
 ├── app/
-│   ├── streamlit_app.py           # Web interface
+│   ├── streamlit_app.py                   # Web interface
 ├── src/
-│   ├── __init__.py                # Version control
-│   ├── rag_system.py              # Core RAG pipeline
-│   ├── document_loader.py         # PDF processing
-│   ├── chunking.py                # Text chunking strategies
-│   ├── vector_store.py            # ChromaDB operations
-│   ├── annotation.py              # Ground truth annotation
-│   ├── exception.py               # Exception management
-│   ├── prompts.py                 # Prompts templates management
-│   └── config.py                  # Configuration management
+│   ├── __init__.py                        # Version control
+│   ├── rag_system.py                      # Core RAG pipeline
+│   ├── document_loader.py                 # PDF processing
+│   ├── chunking.py                        # Text chunking strategies
+│   ├── vector_store.py                    # ChromaDB operations
+│   ├── annotation.py                      # Ground truth annotation
+│   ├── exception.py                       # Exception management
+│   ├── prompts.py                         # Prompts templates management
+│   └── config.py                          # Configuration management
 ├── evaluation/
-│   ├── __init__.py                # Version control
-│   ├── evaluation.py              # Evaluation pipeline
-│   ├── metrics.py                 # DCG/nDCG implementation
-│   ├── run_evaluation.py          # Evaluation runner
-│   └── results_csv/               # CSV outputs
+│   ├── __init__.py                        # Version control
+│   ├── evaluation.py                      # Evaluation pipeline
+│   ├── metrics.py                         # DCG/nDCG implementation
+│   ├── run_evaluation.py                  # Evaluation runner
+│   └── results_csv/                       # CSV outputs
 ├── data/
-    └── BoardGamesRuleBook/        # Game manuals & test data
+    └── BoardGamesRuleBook/                # Game manuals & test data
+            └── CATAN_chunks.json          # CATAN in chunks
+            └── CATAN_eval_short.json      # CATAN Q&A dataset - 10 questions
+            └── CATAN_eval_long.json       # CATAN Q&A dataset - 40 questions
 ```
 
 ---
