@@ -244,12 +244,8 @@ Chosen because it is:<br>
     - chunk boundaries
     - embedding limitations
     - semantic overlap issues
-4. **RAGAS debugging is difficult**<br>
-    When evaluating multiple parameter combinations, some rows in
-    `rag_generation_eval.csv` becomes blank due to:
-    - token limits
-    - silent failures
-    - scoring edge cases
+4. **RAGAS evaluation can be hard to debug**<br>
+    Certain queries produce `NaN` values for some metrics, and identifying the root cause is challenging.
 5. **UI lacks feature toggles**<br>
     No user-adjustable chunking settings or model options (planned).
 
