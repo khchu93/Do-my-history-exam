@@ -16,7 +16,7 @@ project_root = Path(__file__).parent.parent
 sys.path.insert(0, str(project_root))
 
 from src.document_loader import load_documents
-from src.chunking import split_text
+from src.chunking import split_text, save_chunks, load_saved_chunks
 from src.vector_store import prepare_chunks_for_chroma, save_to_chroma, retrieve_top_k
 from src.config import LLM_MODEL, LLM_TEMPERATURE
 from src.prompts import PROMPT_TEMPLATES
@@ -33,7 +33,7 @@ class RAGSystem:
     
     def __init__(
         self,
-        pdf_path: str,
+        pdf_path: str = None,
         chunk_size: int = 300,
         chunk_overlap: int = 30,
         similarity_search: str = "cosine",
@@ -69,13 +69,19 @@ class RAGSystem:
     
     def _setup(self):
         """Load documents and create vector store."""
-        # Load and process documents
-        logger.info(f"Loading PDF: {self.pdf_path}")
-        docs = load_documents(self.pdf_path)
-        
-        # Chunk documents
-        chunks = split_text(docs, self.chunk_size, self.chunk_overlap)
-        
+        # Load and process documents if file available
+        if self.pdf_path is not None:
+            logger.info(f"Loading PDF: {self.pdf_path}")
+            docs = load_documents(self.pdf_path)
+            
+            # Chunk documents
+            chunks = split_text(docs, self.chunk_size, self.chunk_overlap)
+            chunks_path = Path(self.pdf_path).with_name("CATAN_chunks.json")
+            save_chunks(chunks=chunks, path=chunks_path)
+        else:
+            # if file not available, use saved chunks of CATAN rulebook
+            chunks = load_saved_chunks(path = "data/BoardGamesRuleBook/CATAN_chunks.json")
+
         # Prepare and store in vector DB
         chunks_for_chroma = prepare_chunks_for_chroma(chunks)
         self.db, self.tmp_dir = save_to_chroma(chunks_for_chroma, self.embedding_model, self.similarity_search)

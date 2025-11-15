@@ -124,7 +124,6 @@ def load_rag_system():
     try:
         with st.spinner("🔄 Initializing AI system... This may take a minute."):
             rag = RAGSystem(
-                pdf_path=str(PDF_PATH),
                 chunk_size=DEMO_CHUNK_SIZE, 
                 chunk_overlap=DEMO_CHUNK_OVERLAP,
                 similarity_search=SIMILARITY_SEARCH

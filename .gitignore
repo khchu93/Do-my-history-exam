@@ -1,8 +1,6 @@
 chroma_*
 chroma
 .DS_Store
-
-# ignore API key
 .env
 .env.local
 .env.*.local

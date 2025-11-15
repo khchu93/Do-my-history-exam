@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 from src.rag_system import RAGSystem
-from src.config import PDF_PATH, DEMO_TOP_K, PROMPT_TEMPLATE
+from src.config import PDF_PATH, DEMO_TOP_K, PROMPT_TEMPLATE, DEMO_CHUNK_SIZE, DEMO_CHUNK_OVERLAP
 
 
 def print_header():
@@ -46,7 +46,10 @@ def main():
     print(f"   Loading: {PDF_PATH}")
     
     try:
-        rag = RAGSystem(pdf_path=str(PDF_PATH))
+        rag = RAGSystem(
+            pdf_path=str(PDF_PATH), 
+            chunk_size=DEMO_CHUNK_SIZE, 
+            chunk_overlap=DEMO_CHUNK_OVERLAP)
         print("✅ System ready!\n")
     except Exception as e:
         print(f"❌ Error initializing system: {e}")

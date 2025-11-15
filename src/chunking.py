@@ -7,6 +7,7 @@ import logging
 from typing import List
 import sys
 from pathlib import Path
+import json
 
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
@@ -210,3 +211,62 @@ def get_coverage(chunk_id: int, qa_id: str, relevant_chunks: List[Document]) -> 
     
     # Return 0 if chunk has no coverage for this query
     return 0.0
+
+def save_chunks(chunks: List[Document], path: str):
+    """
+    Save a list of Document chunks to a JSON file for later reuse.
+    
+    Args:
+        chunks: List of Document objects to save
+        path: File path to save the JSON
+    
+    Raises:
+        ChunkingError: If saving fails
+    """
+    try:
+        serializable = [
+            {
+                "content": c.page_content,
+                "metadata": c.metadata
+            }
+            for c in chunks
+        ]
+        
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(serializable, f, ensure_ascii=False, indent=2)
+        
+        logger.info(f"Saved {len(chunks)} chunks to {path}")
+    
+    except Exception as e:
+        logger.error(f"Failed to save chunks to {path}: {str(e)}")
+        raise ChunkingError(f"Failed to save chunks: {str(e)}") from e
+
+
+def load_saved_chunks(path: str) -> List[Document]:
+    """
+    Load a list of Document chunks from a JSON file previously saved.
+    
+    Args:
+        path: File path to load the JSON from
+    
+    Returns:
+        List of Document objects
+    
+    Raises:
+        ChunkingError: If loading fails
+    """
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            raw = json.load(f)
+        
+        chunks = [
+            Document(page_content=item["content"], metadata=item["metadata"])
+            for item in raw
+        ]
+        
+        logger.info(f"Loaded {len(chunks)} chunks from {path}")
+        return chunks
+    
+    except Exception as e:
+        logger.error(f"Failed to load chunks from {path}: {str(e)}")
+        raise ChunkingError(f"Failed to load chunks: {str(e)}") from e
