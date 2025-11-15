@@ -326,8 +326,8 @@ python app/demo.py
 python evaluation/run_evaluation.py
 
 # Results saved to:
-# - evaluation/results/retrieval_eval.csv
-# - evaluation/results/generation_eval.csv
+# - evaluation/results_csv/retrieval_eval.csv
+# - evaluation/results_csv/generation_eval.csv
 ```
 
 This will:
