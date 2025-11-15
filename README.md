@@ -361,7 +361,7 @@ DEMO_TOP_K = 5
 # Evaluation parameters (run_evaluation.py)
 CHUNK_SIZES = [125]
 CHUNK_OVERLAPS = [120]
-TOP_K_VALUES = [3,5,7,10]
+TOP_K_VALUES = [5]
 
 # Prompt template
 PROMPT_TEMPLATE = "default"
