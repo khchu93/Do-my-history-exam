@@ -200,7 +200,7 @@ def handle_question(question):
         st.session_state.processing = True
         
         get_answer(question)
-        return True
+        return True 
     return False
 
 
@@ -211,9 +211,10 @@ def main():
     
     # Header
     st.markdown("## 🎲 Board Game Q&A Assistant (CATAN)")
-    st.markdown("*Catan is an easy-to-learn strategy game where you build, trade, and race your friends to grow the best colony. " \
-    "Every roll gives you new resources, every trade shifts the balance, and every match feels different. It’s fast, interactive, "
-    "and surprisingly addictive — the kind of game that turns first-timers into regulars.*")
+    st.markdown("*Catan is a strategy board game where you explore a new island, gather resources from every dice roll, and build roads, settlements, and cities while trading with the other players. " \
+    "The board shifts each game, trades create lively interactions, and every turn opens up new possibilities — so the experience always feels fresh. But with all the building rules, trading conditions, "
+    "and special cases, new players can sometimes feel lost. That’s why I built a RAG-powered game master that answers rule questions on the spot and keeps the flow smooth, so everyone can jump in and " \
+    "enjoy the adventure without getting stuck flipping through the rulebook.*")
     st.markdown("\n*Ask me anything about CATAN rules!*")
     
     # Link button
