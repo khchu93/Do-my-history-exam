@@ -1,4 +1,4 @@
-## 🎲 Board Game Rulebook Q&A Chatbot (RAG) - CATAN Game Master
+## 🎲 Board Game Rulebook Q&A Chatbot (RAG) - CATAN
 
 > **Ask any question about CATAN. Get instant, rule-accurate answers grounded in the official manual.**
 
@@ -226,11 +226,12 @@ Chosen because it is:<br>
 |Best Combination: | 125 | 120 | 5 |
  
 #### **Generation Evaluation (RAGAS)**
-> 📈 **Generation Evaluation (RAGAS, 40-question dataset using optimal retrieval settings)**
+> 📈 **Generation Evaluation (RAGAS, 40-question dataset using optimal retrieval settings, GPT-3.5-Turbo)**
 
 |  | Faithfulness | Answer Relevancy | Answer Correctness | Context Precision | Context Recall |
 |--|--|--|--|--|--|
-|Score: | 0.7583 | 0.9773 | 0.6354 | 0.95 | 0.95 |
+|Mean score: | 0.6958 | 0.9694 | 0.6163 | 0.7921 | 0.8750 |
+|Std score: | 0.4046 | 0.0389 | 0.2121 | 0.2983 | 0.3307 |
 
 ---
 
@@ -326,8 +327,8 @@ python app/demo.py
 python evaluation/run_evaluation.py
 
 # Results saved to:
-# - evaluation/results/retrieval_eval.csv
-# - evaluation/results/generation_eval.csv
+# - evaluation/results_csv/retrieval_eval.csv
+# - evaluation/results_csv/generation_eval.csv
 ```
 
 This will:
